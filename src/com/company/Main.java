@@ -1,5 +1,6 @@
 package com.company;
 
+import com.mongodb.DBCursor;
 import com.sun.imageio.plugins.common.InputStreamAdapter;
 
 import java.io.IOException;
@@ -29,8 +30,8 @@ public class Main {
         System.out.println(DeList.size());
         Dm.addData(DeList);
         SearchBox box = new SearchBox(Dm.getDb());
-        box.Search(mode,test);
-
+        DBCursor cursor = box.Search(mode,test);
+        myUtils.PrintData(cursor);
 
     }
 }

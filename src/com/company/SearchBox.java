@@ -10,6 +10,7 @@ import java.util.ArrayList;
 public class SearchBox {
     DB db;
     DBCollection collection;
+    Utils util = new Utils();
 
     public SearchBox(DB db) {
         this.db = db;
@@ -46,17 +47,7 @@ public class SearchBox {
                     append("CommunityName",1));
 
         }
-        while(cursor.hasNext()){
-            DBObject ne = cursor.next();
-            PrintDBobject(ne);
-        }
         return cursor;
     }
-    public void PrintDBobject(DBObject obj){
-        System.out.println(obj.get("CountryCode")+"    "+obj.get("PostalCode")+"  "+
-                obj.get("PlaceName")+"   " +obj.get("StateName")+"    "+obj.get("StateCode")+"   "+
-                        obj.get("CountyName")+"  "+obj.get("CountyCode")+"  " +obj.get("CommunityName")+" "+
-                                obj.get("CommunityName")+"   "+obj.get("Latitude")+" "+obj.get("Longitude")+"  "+
-                                        obj.get("Accuracy"));
-    }
+
 }

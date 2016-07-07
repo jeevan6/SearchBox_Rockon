@@ -6,7 +6,7 @@ import java.util.ArrayList;
 /**
  * Created by sony on 7/4/2016.
  */
-public class TextReader {
+public class TextReader implements Reader{
     FileInputStream In;
     public ArrayList<DataEntry> readFile(String path) throws IOException {
         ArrayList<DataEntry> list = new ArrayList<>();
@@ -40,18 +40,6 @@ public class TextReader {
                     de.setLongitude(wordsArray[10]);
                     de.setAccuracy(wordsArray[11]);
                     list.add(de);
-                    /*public String countryCode;
-                    public String postalCode;
-                    public String placeName;
-                    public String stateName;
-                    public String stateCode;
-                    public String countyName;
-                    public String countyCode;
-                    public String communityName;
-                    public String communityCode;
-                    public String latitude;
-                    public String longitude;
-                    public String Accuracy;*/
 
                     for(String each : wordsArray){
                         //if(!"".equals(each)){
@@ -61,9 +49,9 @@ public class TextReader {
                 }
             }
 
-            for(String each : words){
+            /*for(String each : words){
                 //System.out.println(each);
-            }
+            }*/
 
             buf.close();
 

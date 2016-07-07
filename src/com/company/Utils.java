@@ -1,5 +1,8 @@
 package com.company;
 
+import com.mongodb.DBCursor;
+import com.mongodb.DBObject;
+
 import java.util.Scanner;
 
 /**
@@ -33,11 +36,37 @@ public class Utils {
 
         return mode;
     }
-    public String getUserString(){
+
+    public String getUserString() {
         String mode;
         Scanner reader = new Scanner(System.in);
         mode = reader.next();
         return mode;
+    }
+
+    public void PrintDBobject(DBObject obj) {
+        System.out.println(obj.get("CountryCode") + "    " + obj.get("PostalCode") + "  " +
+                obj.get("PlaceName") + "   " + obj.get("StateName") + "    " + obj.get("StateCode") + "   " +
+                obj.get("CountyName") + "  " + obj.get("CountyCode") + "  " + obj.get("CommunityName") + " " +
+                obj.get("CommunityName") + "   " + obj.get("Latitude") + " " + obj.get("Longitude") + "  " +
+                obj.get("Accuracy"));
+    }
+
+    public void PrintData(DBCursor cursor) {
+        checkNull(cursor);
+        while(cursor.hasNext()) {
+        DBObject ne = cursor.next();
+        PrintDBobject(ne);
+        }
+    }
+
+    private void checkNull(DBCursor cursor) {
+        if(cursor.size()==0){
+            System.out.println("Sorry::Your Search returned ZERO results");
+        }
+        else{
+            System.out.println("Your Search returned following results");
+        }
     }
 
 }

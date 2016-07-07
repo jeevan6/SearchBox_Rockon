@@ -17,30 +17,26 @@ import com.mongodb.ServerAddress;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class DatabaseManager {
+public class DatabaseManager implements BasicDataBaseManager{
     MongoClient mongoClient;
     DB db;
     DBCollection collection;
     public void connect(){
          try{
 
-             // To connect to mongodb server
             mongoClient = new MongoClient( "localhost" , 27017 );
-
-            // Now connect to your databases
             db = mongoClient.getDB( "ROCK_ON" );
             System.out.println("Connect to database successfully");
-            //boolean auth = db.authenticate(myUserName, myPassword);
-            //System.out.println("Authentication: "+auth);
-            //CreateCollection("testCollection");
 
         }catch(Exception e){
              System.err.println( e.getClass().getName() + ": " + e.getMessage() );
         }
     }
+
     public void CreateCollection(String name){
         collection = db.createCollection(name,null);
     }
+
     public void addData(ArrayList<DataEntry> list){
         if(collection.count()==0) {
             int i = 0;
@@ -51,7 +47,6 @@ public class DatabaseManager {
                 collection.insert(doc);
                 i++;
             }
-            //System.out.println(collection.count());
         }
         System.out.println(collection.count());
     }
