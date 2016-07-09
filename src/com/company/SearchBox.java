@@ -7,7 +7,7 @@ import java.util.ArrayList;
 /**
  * Created by sony on 7/4/2016.
  */
-public class SearchBox {
+public class SearchBox implements DataBaseSearchBox{
     DB db;
     DBCollection collection;
     Utils util = new Utils();
